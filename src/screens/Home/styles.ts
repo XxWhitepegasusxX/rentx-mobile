@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { FlatList } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 
 export const Container = styled.View`
@@ -26,3 +27,9 @@ export const HeaderContent = styled.View`
     justify-content: space-between;
 
 `
+export const CarsList = styled(FlatList).attrs({
+    contentContainerStyle: {
+        padding: 24
+    },
+    showsVerticalScrollIndicator: false,
+})``
