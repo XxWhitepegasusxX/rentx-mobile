@@ -2,6 +2,7 @@ import React from 'react';
 import { Feather } from '@expo/vector-icons'
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from 'styled-components';
+import { useNavigation } from '@react-navigation/native'
 
 import { Accessory } from '../../components/Accessory';
 import { BackButton } from '../../components/BackButton';
@@ -14,11 +15,19 @@ import GasolineSvg from '../../assets/gasoline.svg'
 import ExchangeSvg from '../../assets/exchange.svg'
 import PeopleSvg from '../../assets/people.svg'
 
-import { RentalPrice, RentalPriceLabel, RentalPriceDetails, RentalPriceQuota, RentalPriceTotal, RentalPeriod, DateInfo, DateTitle, DateValue, CalendarIcon, Footer, Accessories, About, Container, Header, CarImages, Content, Details, Description, Brand, Name, Rent, Period, Price} from './styles';
+import { RentalPrice, RentalPriceLabel, RentalPriceDetails, RentalPriceQuota, RentalPriceTotal, RentalPeriod, DateInfo, DateTitle, DateValue, CalendarIcon, Footer, Accessories, Container, Header, CarImages, Content, Details, Description, Brand, Name, Rent, Period, Price} from './styles';
 import { Button } from '../../components/Button';
 
 export function SchedulingDetails(){
+    
     const theme = useTheme()
+
+    const navigation = useNavigation()
+    
+    function handleConfirmRental(){
+        navigation.navigate("SchedulingComplete")
+    }
+
     return(
         <Container>
             <Header>
@@ -73,7 +82,7 @@ export function SchedulingDetails(){
             </Content>
 
             <Footer>
-                <Button title='Confirmar'/>
+                <Button onPress={handleConfirmRental} title='Alugar Agora' color={theme.colors.succes}/>
             </Footer>
         </Container>
     )
